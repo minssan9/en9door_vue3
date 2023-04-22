@@ -20,8 +20,10 @@
     "pinia": "^2.0.23",
     "roboto-fontface": "*",
     "vue": "^3.2.38",
+    "vue-cookies": "^1.8.3",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",
+    "vuetify-dialog": "^2.0.17",
     "vuex": "^4.1.0",
     "webfontloader": "^1.0.0"
   },

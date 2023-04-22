@@ -1,22 +1,22 @@
 <template>
-  <v-app-bar fixed
+  <v-app-bar fixed app
     color="bg_1"
     :dark="isDark"
-             height="50"
-    app @focusout="closeSideBar()"
+    height="50"
+
   >
+<!--    @focusout="closeSideBar()"-->
     <v-row>
-      <v-col cols="10">
+      <v-col cols="6">
         <router-link class="navbar-brand"
                      :class="{'text-black' : !this.$vuetify.theme.dark,
                               'text-white' : this.$vuetify.theme.dark }"
                      to="/">
-
           <v-img width="18" :src="mainLogoImg" /> English Door
         </router-link>
       </v-col>
     </v-row>
-    <v-app-bar-nav-icon @click="openSideBar" />
+    <v-app-bar-nav-icon @click="toggleSideBar" />
   </v-app-bar>
 </template>
 
@@ -43,8 +43,7 @@ export default {
       return common_util.isMobile()
     },
     isDark: function (){
-      const theme = useTheme()
-      theme.current.value.dark
+      return this.$vuetify.theme.dark
     }
   },
   created() {

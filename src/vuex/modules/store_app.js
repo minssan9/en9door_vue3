@@ -1,4 +1,5 @@
 import apiCommon from "@/api/modules/api-common";
+import {useTheme} from "vuetify";
 
 export const storeApp = {
   state: {
@@ -50,9 +51,11 @@ export const storeApp = {
       wage: ''
     }],
     sysconf: [],
+    theme: 'light',
   },
   getters: {
-    app: state => state
+    app: state => state,
+    theme: state => state.theme
   },
   mutations: {
     TOGGLE_SIDEBAR: state => {
@@ -91,6 +94,9 @@ export const storeApp = {
     SET_CLASS_TIME_LIST : (state, classStartTimeList) => {
       state.classStartTimeList = classStartTimeList
     },
+    SET_THEME : (state, theme) => {
+      state.theme = theme
+    }
   },
   actions: {
     toggleSideBar({commit}) {
@@ -144,8 +150,11 @@ export const storeApp = {
         }).then(res=> {
           commit('SET_SYSCONF', res)
         });
-
     },
+    fetchTheme({commit}) {
+      const theme = useTheme()
+      commit('SET_THEME', theme.current.value)
+    }
   }
 }
 

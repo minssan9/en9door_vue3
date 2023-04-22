@@ -5,8 +5,9 @@
     right
     temporary
     location="right"
-    @click="toggleSideBar()"
+
   >
+<!--    @click="toggleSideBar()"-->
     <v-list active-class="text--accent-4" nav dense>
       <!--      <v-list-item-group-->
       <!--          active-class="text&#45;&#45;accent-4"-->
@@ -95,13 +96,15 @@
         <v-btn width="100%" color="primary">Log Out</v-btn>
       </v-list-item>
 
-      <template>
+      <v-list-item>
         <v-switch
-          v-model="$vuetify.theme.dark"
           flat
+          v-model="$vuetify.theme.dark"
           label="Dark Mode"
+          @change="toggleTheme()"
         ></v-switch>
-      </template>
+      </v-list-item>
+
     </v-list>
 
   </v-navigation-drawer>
@@ -113,18 +116,21 @@ import {mapGetters} from 'vuex'
 import common_util from "@/utils/common_util";
 import {useTheme} from "vuetify";
 
+
 export default {
   name: 'NavBar',
-  setup() {
-    const theme = useTheme()
-    return {
-      toggleTheme: () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-    }
-  },
   data: () => ({
     props: false,
     open: ['']
   }),
+  setup () {
+    const theme = useTheme()
+
+    return {
+      theme,
+      toggleTheme: () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
+  },
   computed: {
     ...mapGetters(['app', 'user', 'isManager', 'isTeacher']),
     classObj() {
@@ -138,13 +144,11 @@ export default {
     }
   },
   created() {
+    const theme = useTheme()
+
     this.props = false;
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-    if (darkThemeMq.matches) {
-      this.$vuetify.theme.dark = true
-    } else {
-      this.$vuetify.theme.dark = false
-    }
+    theme.global.name.value = darkThemeMq.matches ? 'dark' : 'light'
   },
   mounted() {
   },
@@ -165,6 +169,13 @@ export default {
       }
       return false
     },
+    // toggleTheme()  {
+    //   const theme = useTheme()
+    //
+    //   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    //   this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    //   console.log(this.$vuetify.theme.dark)
+    // },
     toggleSideBar() {
       this.$store.dispatch('toggleSideBar')
     },

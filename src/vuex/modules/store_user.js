@@ -1,5 +1,5 @@
 import apiAccount from '@/api/modules/api-account'
-import Cookies from 'js-cookie'
+import Cookies from 'vue-cookies'
 
 export const storeUser = {
   state: {
