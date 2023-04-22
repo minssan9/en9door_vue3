@@ -142,9 +142,7 @@
 import {mapActions, mapGetters} from "vuex";
 import GridAttend from "@/components/Grid/grid-attend";
 import apiPayment from "@/api/modules/api-payment";
-import apiStudent from "@/api/modules/api-student";
 import apiManager from "@/api/modules/api-manager";
-import apiAssign from "@/api/modules/api-assign";
 
 export default {
   name: 'DialogAssign',

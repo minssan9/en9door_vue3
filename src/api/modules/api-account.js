@@ -1,5 +1,5 @@
 import {methods} from '@/api/axios-en9door'
-import Cookies from 'js-cookie'
+import Cookies from 'vue-cookies'
 
 const REDIRECT_URI = `${process.env.VUE_APP_REDIRECT_URL}/oauth/redirect`
 const baesURL = `account`

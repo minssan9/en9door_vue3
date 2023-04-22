@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import axios from 'axios'
 import store from '@/piana/index'
 import router from "@/router";
-import Cookies from "js-cookie";
+import Cookies from "vue-cookies";
 
 const APIURL = process.env.VUE_APP_API
 

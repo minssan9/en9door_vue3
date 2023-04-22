@@ -1,9 +1,9 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 
+import commonRouter from "@/router/modules/common";
 // import adminRouter from "@/router/modules/admin";
 // import en9doorRouter from '@/router/modules/en9door'
-// import commonRouter from "@/router/modules/common";
 // import paymentRouter from "@/router/modules/payment";
 
 
@@ -13,14 +13,15 @@ const routes = [
     name: 'Layout',
     component: () => import('@/layouts/sideLayout'),
     children: [
-      {path: '/', component: () => import(/* webpackChunkName: "common" */'@/views/main/main'), name: 'Main', meta: {title: 'English Door'}},
+      {path: '/', name: 'Main', component: () => import(/* webpackChunkName: "common" */'@/views/main/main'), meta: {title: 'English Door'}},
       {path: 'login', name:'login', component: () => import(/* webpackChunkName: "common" */'@/views/login/index'), hidden: true},
+      ...commonRouter,
       // {
       //   path: 'default',
       //   component: () => import('@/layouts/default/Default.vue'),
       // }
-      // {path: '/', component: () => import(/* webpackChunkName: "common" */'@/views/main/main'), name: 'Main', meta: {title: 'English Door'}},
-      // {path: 'login', name:'login', component: () => import(/* webpackChunkName: "common" */'@/views/login/index'), hidden: true},
+
+
       // ...commonRouter,
       // ...en9doorRouter,
       // ...paymentRouter,
