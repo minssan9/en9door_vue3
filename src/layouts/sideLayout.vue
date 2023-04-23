@@ -1,11 +1,13 @@
 <template>
   <v-app class="app-main">
     <Navbar />
+
     <v-content style="padding: 0px" >
       <transition name="fade-transform" mode="out-in"  >
         <router-view :key="key" />
       </transition>
     </v-content>
+
     <FooterBlock />
 
     <NavDrawer />
