@@ -26,7 +26,7 @@ export default {
     FooterBlock
   },
   mounted() {
-    // this.fetchSysConfEn9door()
+    this.fetchSysConfEn9door()
 
     if (this.user.accountId == null){
       this.logout()

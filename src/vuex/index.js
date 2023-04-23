@@ -23,12 +23,12 @@ import { storeUser } from "@/vuex/modules/store_user"
 export default createStore({
   // plugins: [ createPersistedState({ storage: window.sessionStorage }) ],
   // modules: modules,
-  modules: [
+  modules: {
     storeApp,
     storeAssign,
     storeRegister,
     storeUser,
-  ]
+  }
 })
 
 

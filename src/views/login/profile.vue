@@ -74,7 +74,6 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import apiAccount from "@/api/modules/api-account";
-import GoogleLogin from 'vue-google-login';
 
 export default {
   data() {
@@ -87,7 +86,7 @@ export default {
       },
     }
   },
-  components: {GoogleLogin},
+  components: {},
   computed: {
     ...mapGetters(['user']),
     isConnectedKakao : function (){

@@ -4,15 +4,16 @@ import store from '@/piana/index'
 import router from "@/router";
 import Cookies from "vue-cookies";
 
-const APIURL = process.env.VUE_APP_API
+
 
 const app = createApp()
-app.config.globalProperties.$APIURL = APIURL
+app.config.globalProperties.$APIURL = import.meta.env.VITE_APP_API
 
 // create an axios instance
 const service = axios.create({
   baseURL: app.config.globalProperties.$APIURL, // url = base url + request url
-  // withCredentials: true, // send cookies when cross-domain requests
+
+  withCredentials: true, // send cookies when cross-domain requests
   timeout: 10000, // 10초
   headers: {
     'Access-Control-Allow-Credentials': true,
@@ -24,11 +25,11 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    let token = store.getters.token
-      ? store.getters.token
+    let token = store.state.token
+      ? store.state.token
       : Cookies.get('accessToken')
-    let refreshToken = store.getters.refreshToken
-      ? store.getters.refreshToken
+    let refreshToken = store.state.refreshToken
+      ? store.state.refreshToken
       : Cookies.get('refreshToken')
 
     if (token) {

@@ -13,7 +13,7 @@
 import Markdown from '@/components/Markdown'
 
 export default {
-  name: 'About',
+  name: 'InfoCompany',
   data() {
     return {
       company_info: '' +
